@@ -10,14 +10,19 @@ import android.media.AudioManager;
 import android.os.Vibrator;
 
 public class SystemVolume extends CordovaPlugin {
+	AudioManager am;
 	public SystemVolume(){
-
+		am = (AudioManager) this.cordova.getActivity().getSystemService(Context.AUDIO_SERVICE);
 	}
 
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 		if(action.equals("setSystemVolume")) {
 			this.setSystemVolume(args.getDouble(0));
-		} else {
+		} 
+		else if(action.equals("setNormalVolume")) {
+			this.setNormalVolume(args.getDouble(0));
+		}
+		else {
 			return false;
 		}
 
@@ -26,22 +31,12 @@ public class SystemVolume extends CordovaPlugin {
 	}
 
 	public void setSystemVolume(double volume) {
-		AudioManager am = (AudioManager) this.cordova.getActivity().getSystemService(Context.AUDIO_SERVICE);
-		/* am.setRingerMode(AudioManager.RINGER_MODE_SILENT);
-		 int curVolume = audioManager.getStreamVolume(AudioManager.STREAM_RING);
-		callbackContext.success(new JSONObject().put("returnVal", curVolume));	
-		/am.setStreamVolume(
-			AudioManager.STREAM_MUSIC,
-			(int) (am.getStreamMaxVolume(AudioManager.STREAM_MUSIC) * volume),
-			0);
-			
-		am.setStreamVolume(
-			AudioManager.STREAM_SYSTEM,
-			(int) (am.getStreamMaxVolume(AudioManager.STREAM_SYSTEM) * volume),
-			0);
-			*/
-		    am.setRingerMode(AudioManager.RINGER_MODE_SILENT);
-			//int curVolume = audioManager.getStreamVolume(AudioManager.STREAM_RING);
-			//callbackContext.success(new JSONObject().put("returnVal", curVolume));
+		am.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+		
+	}
+	public void setNormalVolume(double volume)
+	{
+		
+		am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
 	}
 }
