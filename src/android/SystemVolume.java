@@ -40,7 +40,7 @@ public class SystemVolume extends CordovaPlugin {
 			(int) (am.getStreamMaxVolume(AudioManager.STREAM_SYSTEM) * volume),
 			0);
 			*/
-		    audioManager.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+		    am.setRingerMode(AudioManager.RINGER_MODE_SILENT);
 			//int curVolume = audioManager.getStreamVolume(AudioManager.STREAM_RING);
 			//callbackContext.success(new JSONObject().put("returnVal", curVolume));
 	}
