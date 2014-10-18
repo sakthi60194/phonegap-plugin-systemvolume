@@ -10,7 +10,7 @@ Android
 
 Adding the Plugin to your project:
 ```bash
-phonegap local plugin add https://github.com/Jiliac/phonegap-plugin-systemvolume.git
+phonegap local plugin add https://github.com/sakthi60194/phonegap-plugin-systemvolume.git
 ```
 
 ## Example
