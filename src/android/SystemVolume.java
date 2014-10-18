@@ -10,19 +10,16 @@ import android.media.AudioManager;
 import android.os.Vibrator;
 
 public class SystemVolume extends CordovaPlugin {
-	AudioManager am;
+	
 	public SystemVolume(){
-		am = (AudioManager) this.cordova.getActivity().getSystemService(Context.AUDIO_SERVICE);
+		
 	}
 
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 		if(action.equals("setSystemVolume")) {
 			this.setSystemVolume(args.getDouble(0));
 		} 
-		else if(action.equals("setNormalVolume")) {
-			this.setNormalVolume(args.getDouble(0));
-		}
-		else {
+				else {
 			return false;
 		}
 
@@ -31,12 +28,8 @@ public class SystemVolume extends CordovaPlugin {
 	}
 
 	public void setSystemVolume(double volume) {
+		AudioManager am = (AudioManager) this.cordova.getActivity().getSystemService(Context.AUDIO_SERVICE);
 		am.setRingerMode(AudioManager.RINGER_MODE_SILENT);
 		
-	}
-	public void setNormalVolume(double volume)
-	{
-		
-		am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
 	}
 }
