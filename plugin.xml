@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
-   id="com.jiliac.systemvolume"
+   id="com.sakthi.systemvolume"
    version="0.1.0">
     <name>System Volume</name>
     <description>PhoneGap System Volume Plugin</description>
     <license>MIT</license>
     <keywords>phonegap,volume</keywords>
-    <repo>https://github.com/sakthi60194/phonegap-plugin-systemvolume</repo>
+    <repo>https://github.com/sakthi/phonegap-plugin-systemvolume.git</repo>
 
     <js-module src="www/systemvolume.js" name="SystemVolume">
         <clobbers target="window.system" />
@@ -17,11 +17,11 @@
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="SystemVolume">
-                <param name="android-package" value="com.jiliac.systemvolume.SystemVolume"/>
+                <param name="android-package" value="com.sakthi.systemvolume.SystemVolume"/>
             </feature>
         </config-file>
 
-        <source-file src="src/android/SystemVolume.java" target-dir="src/com/jiliac/systemvolume" />     
+        <source-file src="src/android/SystemVolume.java" target-dir="src/com/sakthi/systemvolume" />     
 
 
         <config-file target="AndroidManifest.xml" parent="/manifest">
