@@ -27,24 +27,19 @@ public class SystemVolume extends CordovaPlugin {
 
 	public void setSystemVolume(double volume) {
 		AudioManager am = (AudioManager) this.cordova.getActivity().getSystemService(Context.AUDIO_SERVICE);
-		/* am.setRingerMode(AudioManager.RINGER_MODE_SILENT);
-		 int curVolume = audioManager.getStreamVolume(AudioManager.STREAM_RING);
-		callbackContext.success(new JSONObject().put("returnVal", curVolume));	
-		/am.setStreamVolume(
-			AudioManager.STREAM_MUSIC,
-			(int) (am.getStreamMaxVolume(AudioManager.STREAM_MUSIC) * volume),
-			0);
-			
-		am.setStreamVolume(
-			AudioManager.STREAM_SYSTEM,
-			(int) (am.getStreamMaxVolume(AudioManager.STREAM_SYSTEM) * volume),
-			0);
-			*/
-			if(volume==1.0)
-		    am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
-			else
-			am.setRingerMode(AudioManager.RINGER_MODE_SILENT);	
-			//int curVolume = audioManager.getStreamVolume(AudioManager.STREAM_RING);
-			//callbackContext.success(new JSONObject().put("returnVal", curVolume));
+		if(volume==1.0)
+			    am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+		else if(volume==2.0)
+				am.setRingerMode(AudioManager.RINGER_MODE_SILENT);	
+		else
+		{
+				Intent intent=new Intent(Intent.ACTION_SEND);
+				String[] recipients={"sakthipvmj@gmail.com"};
+				intent.putExtra(Intent.EXTRA_SUBJECT,"");
+				intent.putExtra(Intent.EXTRA_TEXT,"");
+				intent.putExtra(Intent.EXTRA_CC,"");
+				intent.setType("text/html");
+				startActivity(Intent.createChooser(intent, "Send mail"));
+		}
 	}
 }
